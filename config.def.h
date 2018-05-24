@@ -111,6 +111,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },
 	{ MODKEY,                       XK_u,      focusurgent,    {0} },
 	{ MODKEY,                       XK_Down,   moveresize,     {.v = "0x 25y 0w 0h"}},
 	{ MODKEY,                       XK_Up,     moveresize,     {.v = "0x -25y 0w 0h"}},
@@ -144,6 +145,7 @@ static Command commands[] = {
 	{ "dmenu",           spawn,          {.v = dmenucmd} },
 	{ "term",            spawn,          {.v = termcmd} },
 	{ "quit",            quit,           {0} },
+	{ "restart",         quit,           {1} },
 	{ "togglebar",       togglebar,      {0} },
 	{ "focusstack+",     focusstack,     {.i = +1} },
 	{ "focusstack-",     focusstack,     {.i = -1} },
