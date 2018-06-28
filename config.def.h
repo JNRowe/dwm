@@ -36,6 +36,7 @@ static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
+#include "fibonacci.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
@@ -43,6 +44,8 @@ static const Layout layouts[] = {
 	{ "[M]",      monocle },
 	{ "TTT",      bstack },
 	{ "===",      bstackhoriz },
+	{ "[@]",      spiral },
+	{ "[\\]",     dwindle },
 };
 
 /* key definitions */
@@ -137,6 +140,8 @@ static Command commands[] = {
 	{ "setlayout-mono",  setlayout,      {.v = &layouts[2]} },
 	{ "setlayout-bstack",setlayout,      {.v = &layouts[3]} },
 	{ "setlayout-bstackh",setlayout,     {.v = &layouts[4]} },
+	{ "setlayout-spiral",setlayout,      {.v = &layouts[5]} },
+	{ "setlayout-dwindle",setlayout,     {.v = &layouts[6]} },
 	{ "togglelayout",    setlayout,      {0} },
 	{ "togglefloating",  togglefloating, {0} },
 	{ "viewall",         view,           {.ui = ~0} },
