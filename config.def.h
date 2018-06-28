@@ -65,6 +65,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 #include "focusurgent.c"
+#include "moveresize.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -103,6 +104,14 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY,                       XK_u,      focusurgent,    {0} },
+	{ MODKEY,                       XK_Down,   moveresize,     {.v = "0x 25y 0w 0h"}},
+	{ MODKEY,                       XK_Up,     moveresize,     {.v = "0x -25y 0w 0h"}},
+	{ MODKEY,                       XK_Right,  moveresize,     {.v = "25x 0y 0w 0h"}},
+	{ MODKEY,                       XK_Left,   moveresize,     {.v = "-25x 0y 0w 0h"}},
+	{ MODKEY|ShiftMask,             XK_Down,   moveresize,     {.v = "0x 0y 0w 25h"}},
+	{ MODKEY|ShiftMask,             XK_Up,     moveresize,     {.v = "0x 0y 0w -25h"}},
+	{ MODKEY|ShiftMask,             XK_Right,  moveresize,     {.v = "0x 0y 25w 0h"}},
+	{ MODKEY|ShiftMask,             XK_Left,   moveresize,     {.v = "0x 0y -25w 0h"}},
 };
 
 /* button definitions */
@@ -189,4 +198,12 @@ static Command commands[] = {
 	{ "toggletag8",      toggletag,      {.ui = 1 << 7} },
 	{ "toggletag9",      toggletag,      {.ui = 1 << 8} },
 	{ "focusurgent",     focusurgent,    {0} },
+	{ "move-up",         moveresize,     {.v = "0x 25y 0w 0h"}},
+	{ "move-down",       moveresize,     {.v = "0x -25y 0w 0h"}},
+	{ "move-right",      moveresize,     {.v = "25x 0y 0w 0h"}},
+	{ "move-left",       moveresize,     {.v = "-25x 0y 0w 0h"}},
+	{ "resize-up",       moveresize,     {.v = "0x 0y 0w 25h"}},
+	{ "resize-down",     moveresize,     {.v = "0x 0y 0w -25h"}},
+	{ "resize-right",    moveresize,     {.v = "0x 0y 25w 0h"}},
+	{ "resize-left",     moveresize,     {.v = "0x 0y -25w 0h"}},
 };
