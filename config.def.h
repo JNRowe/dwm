@@ -41,6 +41,8 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "TTT",      bstack },
+	{ "===",      bstackhoriz },
 };
 
 /* key definitions */
@@ -76,6 +78,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_o,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
@@ -131,6 +135,8 @@ static Command commands[] = {
 	{ "setlayout-tiled", setlayout,      {.v = &layouts[0]} },
 	{ "setlayout-float", setlayout,      {.v = &layouts[1]} },
 	{ "setlayout-mono",  setlayout,      {.v = &layouts[2]} },
+	{ "setlayout-bstack",setlayout,      {.v = &layouts[3]} },
+	{ "setlayout-bstackh",setlayout,     {.v = &layouts[4]} },
 	{ "togglelayout",    setlayout,      {0} },
 	{ "togglefloating",  togglefloating, {0} },
 	{ "viewall",         view,           {.ui = ~0} },
