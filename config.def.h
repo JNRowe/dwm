@@ -68,6 +68,7 @@ static const char *termcmd[]  = { "st", NULL };
 
 #include "focusurgent.c"
 #include "moveresize.c"
+#include "movestack.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -79,6 +80,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
@@ -145,6 +148,8 @@ static Command commands[] = {
 	{ "incnmaster-",     incnmaster,     {.i = -1} },
 	{ "setmfact+",       setmfact,       {.f = +0.05} },
 	{ "setmfact-",       setmfact,       {.f = -0.05} },
+	{ "movestack+",      movestack,      {.i = +1 } },
+	{ "movestack-",      movestack,      {.i = -1 } },
 	{ "zoom",            zoom,           {0} },
 	{ "view",            view,           {0} },
 	{ "killclient",      killclient,     {0} },
