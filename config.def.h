@@ -49,6 +49,7 @@ static const Layout layouts[] = {
 	{ "===",      bstackhoriz },
 	{ "[@]",      spiral },
 	{ "[\\]",     dwindle },
+	{ NULL,       NULL },
 };
 
 /* key definitions */
@@ -95,6 +96,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_o,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY|ControlMask,           XK_comma,  cyclelayout,    {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_s,      togglesticky,   {0} },
@@ -170,6 +173,8 @@ static Command commands[] = {
 	{ "setlayout-bstackh",setlayout,     {.v = &layouts[4]} },
 	{ "setlayout-spiral",setlayout,      {.v = &layouts[5]} },
 	{ "setlayout-dwindle",setlayout,     {.v = &layouts[6]} },
+	{ "cyclelayout+",    cyclelayout,    {.i = -1 } },
+	{ "cyclelayout-",    cyclelayout,    {.i = +1 } },
 	{ "togglelayout",    setlayout,      {0} },
 	{ "togglefloating",  togglefloating, {0} },
 	{ "togglesticky",    togglesticky,   {0} },
